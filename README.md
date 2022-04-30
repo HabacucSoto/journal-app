@@ -1,5 +1,12 @@
 # journal
 
+## Instalaciones para css
+```
+npm i bootstrap
+npm i --save-dev sass-loader@10 sass
+```
+
+
 ## Project setup
 ```
 npm install
