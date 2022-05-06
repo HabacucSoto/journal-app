@@ -18,7 +18,7 @@ export default {
   methods: {
     // ! Navegacion por name y no por ruta
     goToDaybook(){
-      this.$router.push({ name: 'daybook' })
+      this.$router.push({ name: 'no-entry' })
     }
   }
 }
