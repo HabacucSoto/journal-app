@@ -27,7 +27,7 @@ import { defineAsyncComponent } from 'vue';
         <textarea placeholder="¿Qué sucedió hoy?"></textarea>
     </div>
 
-    <Fab />
+    <Fab icon="fa-save" />
 
     <img src="https://i.natgeofe.com/n/2a832501-483e-422f-985c-0e93757b7d84/6.jpg?w=636&h=477" 
         alt="entry-image" class="img-thumbnail">
