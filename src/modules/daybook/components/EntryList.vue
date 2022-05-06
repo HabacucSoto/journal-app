@@ -1,9 +1,34 @@
+import { defineAsyncComponent } from 'vue';
 <template>
-    <h1>EntryList!</h1>
+    <div class="entry-list-container">
+        <div class="px-2 pt-2">
+            <input type="text" class="form-control" placeholder="Buscar">
+        </div>
+
+        <div class="entry-scrollarea">
+            <Entry v-for="item in 100" :key="item" />
+        </div>
+    </div>
 </template>
 
 <script>
+import { defineAsyncComponent } from 'vue'
+
 export default {
-    name: 'EntryList'
+    name: 'EntryList',
+    components: {
+        Entry: defineAsyncComponent( () => import( './Entry.vue' ) )
+    }
 }
 </script>
+
+<style lang="scss" scoped>
+    .entry-list-container {
+        border-right: 1px solid #2c3e50;
+        height: calc( 100vh - 56px );
+    }
+    .entry-scrollarea {
+        height: calc( 100vh - 110px );
+        overflow-y: scroll;
+    }
+</style>
