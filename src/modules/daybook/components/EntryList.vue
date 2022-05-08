@@ -6,7 +6,7 @@ import { defineAsyncComponent } from 'vue';
         </div>
 
         <div class="entry-scrollarea">
-            <Entry v-for="item in entriesByTerm" :key="item" />
+            <Entry v-for="entry in entriesByTerm" :key="entry.id" :entry="entry"/>
         </div>
     </div>
 </template>
