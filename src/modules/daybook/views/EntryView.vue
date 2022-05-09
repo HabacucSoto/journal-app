@@ -1,36 +1,41 @@
 import { defineAsyncComponent } from 'vue';
 <template>
-    <div class="entry-title d-flex justify-content-between p-2">
 
-        <div>
-            <span class="text-success fs-3 fw-bold">{{ day }}</span>
-            <span class="mx-1 fs-3">{{ month }}</span>
-            <span class="mx-2 fs-4 fw-light">{{ yearDay }}</span>
+    <template v-if="entry">
+        
+        <div class="entry-title d-flex justify-content-between p-2">
+
+            <div>
+                <span class="text-success fs-3 fw-bold">{{ day }}</span>
+                <span class="mx-1 fs-3">{{ month }}</span>
+                <span class="mx-2 fs-4 fw-light">{{ yearDay }}</span>
+            </div>
+
+            <div>
+                <button class="btn btn-danger mx-2">
+                    Borrar
+                    <i class="fa fa-trash-alt"></i>
+                </button>
+                <button class="btn btn-primary">
+                    Subir foto
+                    <i class="fa fa-upload"></i>
+                </button>
+            </div>
+
         </div>
 
-        <div>
-            <button class="btn btn-danger mx-2">
-                Borrar
-                <i class="fa fa-trash-alt"></i>
-            </button>
-            <button class="btn btn-primary">
-                Subir foto
-                <i class="fa fa-upload"></i>
-            </button>
+        <hr>
+
+        <div class="d-flex flex-column px-3 h-75">
+            <textarea v-model="entry.text" placeholder="¿Qué sucedió hoy?"></textarea>
         </div>
 
-    </div>
+        <img src="https://i.natgeofe.com/n/2a832501-483e-422f-985c-0e93757b7d84/6.jpg?w=636&h=477" 
+        alt="entry-image" class="img-thumbnail">
 
-    <hr>
-
-    <div class="d-flex flex-column px-3 h-75">
-        <textarea v-model="entry.text" placeholder="¿Qué sucedió hoy?"></textarea>
-    </div>
+    </template>
 
     <Fab icon="fa-save" />
-
-    <img src="https://i.natgeofe.com/n/2a832501-483e-422f-985c-0e93757b7d84/6.jpg?w=636&h=477" 
-        alt="entry-image" class="img-thumbnail">
 
 </template>
 
@@ -73,12 +78,17 @@ export default {
     methods: {
         loadEntry(){
             const entry = this.getEntryById( this.id )
-            if( !entry ) this.$router.push({ name: 'no-entry' })//Redireccion
+            if( !entry ) return this.$router.push({ name: 'no-entry' })//Redireccion
             this.entry = entry
         }
     },
     created(){
         this.loadEntry()
+    },
+    watch: {
+        id(){
+            this.loadEntry()
+        }
     }
 }
 </script>
