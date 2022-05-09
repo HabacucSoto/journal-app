@@ -14,6 +14,14 @@ export const getEntriesByTerm = ( state ) => ( term = '' ) => {
 
 }
 
-export const getEntryById = ( /*state*/ ) => {
+export const getEntryById = ( state ) => ( id = '' ) => {
     
+    const entry = state.entries.find( entry => entry.id === id )
+    
+    if( !entry ) return 
+
+    return { ...entry }
+
 }
+
+// TODO: 1. Leer url para traer la info del store 2. Mostrar la inf 3. Si la entrada no coincide con el id, sacar al usuario

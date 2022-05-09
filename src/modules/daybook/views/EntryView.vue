@@ -36,11 +36,30 @@ import { defineAsyncComponent } from 'vue';
 
 <script>
 import { defineAsyncComponent } from 'vue'
+import { mapGetters } from 'vuex'
 
 export default {
+    props: {
+        id: {
+            type: String,
+            required: true
+        }
+    },
     name: 'EntryView',
     components: {
         Fab: defineAsyncComponent( () => import('../components/Fab.vue') )
+    },
+    computed: {
+        ...mapGetters('journal', ['getEntryById'])
+    },
+    methods: {
+        loadEntry(){
+            const entry = this.getEntryById( this.id )
+            console.log(entry)
+        }
+    },
+    created(){
+        this.loadEntry()
     }
 }
 </script>
