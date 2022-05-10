@@ -5,7 +5,7 @@
 // ! Si no se usa el commit se puede comentar 
 
 export const loadEntries = async (/*{ commit }*/) => {
-
+    
 }
 
 export const updateEntry = async (/*{ commit }*/) => {
