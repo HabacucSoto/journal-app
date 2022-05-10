@@ -4,7 +4,10 @@
 
 // ! Si no se usa el state se puede comentar para no tener problemas con linter
 
-export const setEntries = ( /*state*/ ) => {
+export const setEntries = ( state, entries ) => {
+
+    state.entries = [ ...state.entries, ...entries ]
+    state.isLoading = false
 
 }
 
