@@ -35,7 +35,7 @@ import { defineAsyncComponent } from 'vue';
 
     </template>
 
-    <Fab icon="fa-save" />
+    <Fab @on:click="saveEntry" icon="fa-save" />
 
 </template>
 
@@ -80,6 +80,9 @@ export default {
             const entry = this.getEntryById( this.id )
             if( !entry ) return this.$router.push({ name: 'no-entry' })//Redireccion
             this.entry = entry
+        },
+        async saveEntry(){
+            console.log('guardando entrada')
         }
     },
     created(){
